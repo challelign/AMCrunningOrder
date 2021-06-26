@@ -7,9 +7,37 @@
                 {{--                {{auth()->user()->id }}--}}
                 {{--                {{auth()->user()->role_id }}--}}
                 <div class="card">
+                    @if(\Illuminate\Support\Facades\Auth::user()->role_id == 12)
+
+
+                        <div class="card-header bg-info text-center" style="font-size: 20px">
+                            የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                    መርሀ ግብር
+
+                        </div>
+                        <div class="card-body" style="font-size: 20px">
+                            <div class="col-md-10 text-center align-content-center">
+                                <img src="{{asset('logo-image/amico.jpg')}}" alt="">
+{{--                                <video width="450" height="250" controls--}}
+{{--                                       style="border-radius: 2px; border-style: solid; border-color: green;">--}}
+{{--                                    <source src="{{URL::asset("/css/amara.mp4")}}" type="video/mp4">--}}
+{{--                                    Your browser does not support the video tag.--}}
+{{--                                </video>--}}
+                            </div>
+
+                            <br>
+                            <p style="color: red">
+                                '' ለህብረተሰብ ለውጥ እንተጋለን. ''
+                            </p>
+                            <hr>
+
+                        </div>
+                    @endif
+
                     @if(\Illuminate\Support\Facades\Auth::user()->role_id == 7)
                         <div class="card-header text-center" style="font-size: 20px">
-                            የአማራ ብዙኃን መገናኛ ድርጅት የዕለት ስርጭት ማስፈፀሚያ መርሀ ግብር
+                            የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                    መርሀ ግብር
 
                         </div>
                         <div class="card-body" style="font-size: 20px">
@@ -31,7 +59,8 @@
                     @endif
                     @if(\Illuminate\Support\Facades\Auth::user()->role_id == 4)
                         <div class="card-header text-center" style="font-size: 20px">
-                            የአማራ ብዙኃን መገናኛ ድርጅት የዕለት ስርጭት ማስፈፀሚያ መርሀ ግብር
+                            የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                    መርሀ ግብር
 
                         </div>
                         <div class="card-body" style="font-size: 20px">
@@ -55,7 +84,8 @@
 
                     @if(\Illuminate\Support\Facades\Auth::user()->role_id == 8)
                         <div class="card-header text-center" style="font-size: 20px">
-                            የአማራ ብዙኃን መገናኛ ድርጅት የዕለት ስርጭት ማስፈፀሚያ መርሀ ግብር
+                            የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                    መርሀ ግብር
 
                         </div>
                         <div class="card-body" style="font-size: 20px">
@@ -77,7 +107,8 @@
                     @endif
                     @if(\Illuminate\Support\Facades\Auth::user()->role_id == 10 || \Illuminate\Support\Facades\Auth::user()->role_id == 9 )
                         <div class="card-header text-center" style="font-size: 20px">
-                            የአማራ ብዙኃን መገናኛ ድርጅት የዕለት ስርጭት ማስፈፀሚያ መርሀ ግብር
+                            የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                    መርሀ ግብር
 
                         </div>
                         <div class="card-body" style="font-size: 20px">
@@ -105,7 +136,8 @@
 
                         </div>
                         <div class="card-body" style="font-size: 20px">
-                            የአማራ ብዙኃን መገናኛ ድርጅት የዕለት ስርጭት ማስፈፀሚያ መርሀ ግብር
+                            የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                    መርሀ ግብር
 
                             <div class="float-right">
                                 <a href="{{route('register-user-admin')}}"

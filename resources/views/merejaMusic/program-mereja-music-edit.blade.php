@@ -49,7 +49,7 @@
                                             @foreach($ken as $k)
                                                 <option value="{{$k->id}}"
                                                         @if(isset($mereja))
-                                                        @if($k->id === $mereja->program_meleya_id)
+                                                        @if($k->id === $mereja->program_ken_id)
                                                         selected
                                                     @endif
                                                     @endif >
@@ -152,6 +152,11 @@
 @endsection
 
 @section('js')
+    <script src = "{{asset('js/jquery.min.js')}}" ></script>
+
+    <link rel="stylesheet" href="{{asset('css/redmond.calendars.picker.css')}}">
+
+        <script src="{{asset('js/jquery.plugin.js')}}"></script>
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
     <script>
@@ -180,4 +185,39 @@
                 console.error(err.stack);
             });
     </script>
+    <script src="{{asset('js/jquery.calendars.js')}}"></script>
+    <script src="{{asset('js/jquery.calendars.plus.js')}}"></script>
+    <script src="{{asset('js/jquery.calendars.picker.js')}}"></script>
+
+    <script src="{{asset('js/jquery.calendars.ethiopian.js')}}"></script>
+    <script src="{{asset('js/jquery.calendars.ethiopian-am.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.calendars.picker-am.js')}}"></script>
+
+
+
+
+    <script>
+        $('#configPicker').datepick({showTrigger: '#calImg'});
+        $('#today_date').calendarsPicker({calendar: calendar, onSelect: showDate});
+
+    </script>
+    <script>
+
+        $(function() {
+            var calendar = $.calendars.instance('ethiopian','am');
+            $('#today_date').calendarsPicker({
+                calendar: calendar,
+                dateFormat: "dd/mm/yyyy",
+                animate:true,
+                // miniDate:new Date(),
+                // dateFormat: "mm-dd-yyyy",
+                maxDate:1,
+                minDate:0,
+
+            });
+            // $('#today_date').calendarsPicker({calendar: calendar, onSelect: showDate});
+
+        });
+    </script>
+
 @endsection

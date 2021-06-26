@@ -23,7 +23,8 @@ class ProgramKen extends Model
     {
         return $this->hasMany(Fmprogram::class);
     }
-   public function programtv()
+
+    public function programtv()
     {
         return $this->hasMany(Tvprogram::class);
     }
@@ -32,8 +33,15 @@ class ProgramKen extends Model
     public function mitelalefbettv()
     {
         return $this->belongsTo(Tvmitelalefbet::class);
-    }  public function mastawokiatv()
+    }
+
+    public function mastawokiatv()
     {
         return $this->belongsTo(Tvmastawokia::class);
+    }
+
+    public function feedback()
+    {
+        return $this->belongsTo(Feedback::class);
     }
 }

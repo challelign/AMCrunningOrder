@@ -44,6 +44,9 @@ class UserSeeder extends Seeder
         $role11 = \App\Role::create([
             'name' => 'ሲስተም ተቆጣጣሪ', // azegaj
         ]);
+        $role12 = \App\Role::create([
+            'name' => 'እንግዳ አካውንት', // azegaj
+        ]);
 
 //        $tvpcontent = \App\Tvpcontent::create([
 //            'name' => 'chalie'
@@ -166,7 +169,7 @@ class UserSeeder extends Seeder
 
 
 //        end comment
-        $users11 = \App\User::create([
+        $users13 = \App\User::create([
             'name' => 'Challelign Tilahun',
 
             'username' => 'chalie',

@@ -30,15 +30,23 @@ class UserRegisterController extends Controller
      */
     public function registerUserForm()
     {
-        return view('auth.register')
-            ->with('users', User::all())
-            ->with('role', Role::all());
+        if (auth()->user()->role->id == 1) {
+            return view('auth.register')
+                ->with('users', User::all())
+                ->with('role', Role::all());
+        }
+        session()->flash('error', 'You are not allowed to access this page. ');
+        return redirect(route('home'));
     }
 
     public function userEdit($id)
     {
 //        dd($id);
         $user_data = User::find($id);
+        if (auth()->user()->role->id == 2) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
 //        dd($user_data);
         return view('auth.register')
             ->with('user_data', $user_data)
@@ -51,11 +59,14 @@ class UserRegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'role_id' => ['required'],
             'user_created_by' => auth()->user()->name,
-            'username' => ['required', 'string',  'unique:users'],
+            'username' => ['required', 'string', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
 
         ]);
-
+        if (auth()->user()->role->id == 2) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
         User::create([
             'name' => $request->name,
             'role_id' => $request->role_id,
@@ -72,13 +83,16 @@ class UserRegisterController extends Controller
     public function userUpdate(Request $request, $id)
     {
         $user = User::find($id);
-
+        if (auth()->user()->role->id == 2) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
 //        dd($request->all());
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'role_id' => 'required',
             'user_created_by' => auth()->user()->name,
-            'username' => ['required', 'string', 'max:255'  ,'unique:users'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
 
         ]);
@@ -97,7 +111,10 @@ class UserRegisterController extends Controller
     public function userDelete($id)
     {
         $user = User::findorFail($id);
-
+        if (auth()->user()->role->id == 2) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
 //        dd($pro = Program::all()->where('user_id', $user->id));
         $pro = Program::all()->where('user_id', $user->id);
         $mas = Mastawokia::all()->where('user_id', $user->id);
@@ -142,7 +159,8 @@ class UserRegisterController extends Controller
             ->with('role', Role::all());
     }
 
-    public function changePasswordUpdate(Request $request){
+    public function changePasswordUpdate(Request $request)
+    {
 
         if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
             return back()->with('error', 'Your Old password does not match to our database.');
@@ -162,6 +180,7 @@ class UserRegisterController extends Controller
         return redirect(route('home'));
 
     }
+
     /**
      * Display the specified resource.
      *

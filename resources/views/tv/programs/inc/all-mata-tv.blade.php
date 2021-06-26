@@ -392,7 +392,7 @@
         function handelDelete(id) {
             var form = document.getElementById('deleteCategoryForm');
 
-            form.action = '/tv/programs/' + id + '/program-list-by-date-delete-tv/';
+            form.action = '../' + id + '/program-list-by-date-delete-tv/';
             // console.log('deleting .' , form);
             $('#deleteModal').modal('show')
         }
@@ -401,7 +401,7 @@
         function handelDeleteMastawokia(id) {
             var form = document.getElementById('deleteCategoryFormMastawokia');
 
-            form.action = '/tv/mastawokia/' + id + '/mastawokia-delete-tv/';
+            form.action = '../mastawokia/' + id + '/mastawokia-delete-tv/';
             // console.log('deleting .' , form);
             $('#deleteModalMastawokia').modal('show')
         }

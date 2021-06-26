@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid justify-content-sm-center">
+    <div class="container justify-content-sm-center">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -750,7 +750,7 @@
         function handelDelete(id) {
             var form = document.getElementById('deleteCategoryForm');
 
-            form.action = '/fm/programs/' + id + '/program-list-by-date-delete-fm/';
+            form.action = '../' + id + '/program-list-by-date-delete-fm/';
             // console.log('deleting .' , form);
             $('#deleteModal').modal('show')
         }
@@ -759,7 +759,7 @@
         function handelDeleteMereja(id) {
             var form = document.getElementById('deleteCategoryFormMereja');
 
-            form.action = '/fm/merejaMusic/' + id + '/program-mereja-music-delete-fm/';
+            form.action = '../merejaMusic/' + id + '/program-mereja-music-delete-fm/';
             // console.log('deleting .' , form);
             $('#deleteModalMereja').modal('show')
         }
@@ -770,7 +770,7 @@
         function handelDeleteMastawokia(id) {
             var form = document.getElementById('deleteCategoryFormMastawokia');
 
-            form.action = '/fm/mastawokia/' + id + '/mastawokia-delete-fm/';
+            form.action = '../mastawokia/' + id + '/mastawokia-delete-fm/';
             // console.log('deleting .' , form);
             $('#deleteModalMastawokia').modal('show')
         }

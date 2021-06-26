@@ -4,7 +4,7 @@
     <link href="{{asset ('css/jquery.dataTables.css')}}" def rel="stylesheet">
 @endsection
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 @include('layouts.radiot')
@@ -82,7 +82,7 @@
 {{--                                        <td>{!!  $ms->mastawokia_Yetestenagedew_meten!!}</td>--}}
                                         <td>{{$ms->artayi}}</td>
                                         <td>{{$ms->user->name}}</td>
-                                        <td>{{$ms->not_technician}}</td>
+                                        <td>{{$ms->technician_not}}</td>
                                     </tr>
                                 @endif
                             @endforeach

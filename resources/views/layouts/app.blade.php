@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{{asset('logo-image/ammalogo.png')}}"/>
+{{--    <link rel="icon" type="image/x-icon" href="{{asset('logo-image/amico.jpg')}}"/>--}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>
-        Running Order
-    </title>
+    <title>የአሚኮ ዕለት ስርጭት ማስፈፀሚያ ሲሰተም </title>
+    <link rel="icon" type="image/x-icon" href="{{asset('logo-image/amico.jpg')}}"/>
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 {{--    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">--}}
 
@@ -28,7 +28,7 @@
     <style>
         body {
             /*background-color: #1d68a7;*/
-            width: auto;
+            width: 100%;
 
 
         }
@@ -54,21 +54,67 @@
         .hcolor > .active > a {
             color: orange;
         }
+
         navbar-nav.navbar-center {
             position: absolute;
             left: 50%;
             transform: translatex(-50%);
         }
 
+        ul li a {
+            margin-right: 10px;
+        }
+
+        /*nav{width:auto; !*float:right;*! overflow:auto; line-height: 50px;}*/
+        /*nav {*/
+        /*    border: 1px solid #000000;*/
+        /*    border-right: none;*/
+        /*}*/
+
+        /*nav ul {*/
+        /*    overflow: hidden;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*}*/
+
+        /*nav ul li {*/
+        /*    list-style: none;*/
+        /*    float: left;*/
+        /*    text-align: center;*/
+        /*    border-left: 1px;*/
+        /*    border-right: 1px ;*/
+        /*    width: 16.6667%; !* fallback for non-calc() browsers *!*/
+        /*    width: calc(100% / 6);*/
+        /*    box-sizing: border-box;*/
+        /*}*/
+
+
+        /*html, body {*/
+        /*    min-height: 100%;*/
+        /*}*/
+        body {
+            display: table;
+            /*min-height: 100vh;*/
+            /*max-width: 400px;*/
+            /*margin: 0 auto;*/
+        }
     </style>
     @yield('css')
 </head>
 <body>
 <div id="app">
-    <div class="bg-primary text-center" style="color: yellow">
-        <b style="font-size: 25px"> የአማራ ብዙኃን መገናኛ ድርጅት የዕለት ስርጭት ማስፈፀሚያ መርሀ ግብር</b>
-    </div>
-    <nav class="navbar navbar-expand-md  navbar-light bg-info shadow-sm navbar-center justify-content-center" style="text-align: center">
+    @auth
+        <div class=" text-center" style="max-width: 100%;color: white;background-color: #b22222">
+            <b style="font-size: 28px">የአማራ ሚዲያ ኮርፖሬሽን የዕለት ስርጭት ማስፈፀሚያ
+                መርሐ ግብር ሲስተም </b>
+        </div>
+    @endauth
+
+
+
+    {{--    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-expand-xl clearfix navbar-dark bg-dark" style="verflow: hidden;max-width: 100%;color: red">--}}
+    <nav class="navbar navbar-expand-md  navbar-light shadow-sm navbar-center justify-content-center"
+         style="text-align: center;font-size: 10px;background-color: #b22222">
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -86,14 +132,91 @@
                     <ul class="navbar-nav mr-auto " style="font-size: 15px;width: 50%;padding-left: 30%">
                         <li>
                             <a href="{{route('home')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">Home</a>
+                               style=" text-align: center ;color: white">|Home|</a>
                         </li>
                         <li>
                             <a href="{{route('register-user-admin')}}" class="dropdown-item hcolor px-1"
-                               style="text-align: center ;color: white">ተጠቃሚ መዝግብ </a>
+                               style="text-align: center ;color: white">|ተጠቃሚ መዝግብ| </a>
                         </li>
                     </ul>
                 @endif
+
+
+
+
+                @if(\Illuminate\Support\Facades\Auth::user()->role_id == 12)
+                    <ul class="navbar-nav mr-auto " style="font-size: 15px;width: 50%;padding-left: 30%">
+                        <li class="nav-item dropdown  hcolor  py-1 ">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                               style=" text-align: center ;color: white ; padding-top: 0px">|የአማራ ራዲዮ የተላለፉ ..|
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('program-list')}}">
+                                    ||ፕሮግራሞች||
+                                </a>
+                                <a class="dropdown-item" href="{{route('mereja-music-list')}}">
+                                    ||መረጃና ሙዚቃ||
+                                </a>
+                                <a class="dropdown-item" href="{{route('mastawokia-list')}}">
+                                    ||ማስታወቂያ||
+                                </a>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown  hcolor  py-1 ">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#"
+                               role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                               style=" text-align: center ;color: white ; padding-top: 0px">
+                                |ባሕርዳር ኤፍኤም የተላለፉ ..|
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right " style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('program-list-fm')}}">
+                                    |ፕሮግራሞች|
+                                </a>
+                                <a class="dropdown-item" href="{{route('mereja-music-list-fm')}}">
+                                    |መረጃና ሙዚቃ|
+                                </a>
+                                <a class="dropdown-item" href="{{route('mastawokia-list-fm')}}">
+                                    |ማስታወቂያ|
+                                </a>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown  hcolor  py-1 ">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                               style=" text-align: center ;color: white ; padding-top: 0px">
+                                |የቴሌቪዥን የተላለፉ ..|
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown"
+                                 style="background-color: red">
+                                <a class="dropdown-item" href="{{route('program-list-tv')}}">
+                                    |ፕሮግራሞች|
+                                </a>
+                                <a class="dropdown-item" href="{{route('mastawokia-list-tv')}}">
+                                    |ማስታወቂያዎች|
+                                </a>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="{{route('feedback-create')}}" class="dropdown-item hcolor px-1"
+                               style="text-align: center ;color: white">|የስርጭት ባለሙያው ዓስተያየት| </a>
+                        </li>
+
+                    </ul>
+
+
+
+                @endif
+
+
 
 
 
@@ -102,26 +225,26 @@
 
                         <li>
                             <a href="{{route('home')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">Home</a>
+                               style=" text-align: center ;color: white">|Home|</a>
                         </li>
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id == 10)
                             <li>
                                 <a href="{{route('register-user-pro')}}" class="dropdown-item hcolor px-1"
-                                   style="text-align: center ;color: white">ተጠቃሚ መዝግብ </a>
+                                   style="text-align: center ;color: white">|ተጠቃሚ መዝግብ| </a>
                             </li>
                         @endif
                         <li>
                             <a href="{{route('mastawokia-create-tv')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">ቴቪ ማስታወቂያ ጨምር </a>
+                               style=" text-align: center ;color: white">|ቴቪ ማስታወቂያ ጨምር| </a>
                         </li>
                         <li>
                             <a href="{{route('mastawokia-create')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">ራዲዮ ማስታወቂያ ጨምር </a>
+                               style=" text-align: center ;color: white">|ራዲዮ ማስታወቂያ ጨምር| </a>
 
                         </li>
                         <li>
                             <a href="{{route('mastawokia-create-fm')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">ኤፍኤም ማስታወቂያ ጨምር </a>
+                               style=" text-align: center ;color: white">|ኤፍኤም ማስታወቂያ ጨምር| </a>
                         </li>
 
 
@@ -129,17 +252,18 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                ኤፍኤም ማስታወቂያዎች
+                                |ኤፍኤም ማስታወቂያዎች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
                                 {{--                                <a class="dropdown-item" href="{{route('program-list-fm')}}">--}}
                                 {{--                                    ፕሮግራሞች--}}
                                 {{--                                </a>--}}
                                 <a class="dropdown-item" href="{{route('mastawokia-list-fm-yaltelalefu')}}">
-                                    ያልተላለፉ ማስታወቂያዎች
+                                    |ያልተላለፉ ማስታወቂያዎች|
                                 </a>
                                 <a class="dropdown-item" href="{{route('mastawokia-list-fm')}}">
-                                    ዓየርላይ የዋሉ ማስታወቂያዎች
+                                    |ዓየርላይ የዋሉ ማስታወቂያዎች|
                                 </a>
                             </div>
                         </li>
@@ -147,18 +271,19 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                የአማራ ራዲዮ ማስታወቂያዎች
+                                |የአማራ ራዲዮ ማስታወቂያዎች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
                                 {{--                                <a class="dropdown-item" href="{{route('program-list-fm')}}">--}}
                                 {{--                                    ፕሮግራሞች--}}
                                 {{--                                </a>--}}
                                 <a class="dropdown-item" href="{{route('mastawokia-list-yaltelalefu')}}">
-                                    ያልተላለፉ ማስታወቂያዎች
+                                    |ያልተላለፉ ማስታወቂያዎች|
                                 </a>
 
                                 <a class="dropdown-item" href="{{route('mastawokia-list')}}">
-                                    ዓየርላይ የዋሉ ማስታወቂያዎች
+                                    |ዓየርላይ የዋሉ ማስታወቂያዎች|
                                 </a>
                             </div>
                         </li>
@@ -167,14 +292,15 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                ቴቪ ማስታወቂያዎች
+                                |ቴቪ ማስታወቂያዎች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown"
+                                 style="background-color: red">
                                 <a class="dropdown-item" href="{{route('mastawokia-list-tv-yaltelalefu')}}">
-                                    ያልተላለፉ ማስታወቂያዎች
+                                    |ያልተላለፉ ማስታወቂያዎች|
                                 </a>
                                 <a class="dropdown-item" href="{{route('mastawokia-list-tv')}}">
-                                    ዓየርላይ የዋሉ ማስታወቂያዎች
+                                    |ዓየርላይ የዋሉ ማስታወቂያዎች|
                                 </a>
                             </div>
                         </li>
@@ -189,43 +315,45 @@
                     <ul class="navbar-nav mr-auto" style="font-size: 15px">
                         <li>
                             <a href="{{route('home')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">Home</a>
+                               style=" text-align: center ;color: white">|Home|</a>
                         </li>
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1)
                             <li>
                                 <a href="{{route('program-ayidi-create')}}" class="dropdown-item hcolor px-1"
-                                   style="text-align: center ;color: white">አይዲ ጨምር</a>
+                                   style="text-align: center ;color: white">|አይዲ ጨምር|</a>
                             </li>
                             <li>
                                 <a href="{{route('register-user')}}" class="dropdown-item hcolor px-1"
-                                   style="text-align: center ;color: white">ተጠቃሚ መዝግብ </a>
+                                   style="text-align: center ;color: white">|ተጠቃሚ መዝግብ| </a>
                             </li>
                         @endif
                         <li>
                             <a href="{{route('program-create')}}" class="dropdown-item hcolor  px-1"
-                               style="text-align: center ;color: white">የእለቱን ፕሮግራሞች ጨምር </a>
+                               style="text-align: center ;color: white">|የእለቱን ፕሮግራሞች ጨምር| </a>
                         </li>
                         <li>
                             <a href="{{route('program-mereja-music-create')}}" class="dropdown-item hcolor  px-1"
-                               style="text-align: center; color: white">መረጃና ሙዚቃ ጨምር </a>
+                               style="text-align: center; color: white">|መረጃና ሙዚቃ ጨምር| </a>
                         </li>
                         <li class="nav-item dropdown  hcolor  py-1 ">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                @if(\Illuminate\Support\Facades\Auth::user()->role_id == 8) የአማራ ራዲዮ የተላለፉ ፕሮግራሞች @else
-                                    የተላለፉ ፕሮግራሞች @endif
+                                @if(\Illuminate\Support\Facades\Auth::user()->role_id == 8) |የአማራ ራዲዮ የተላለፉ
+                                ፕሮግራሞች| @else
+                                    |የተላለፉ ፕሮግራሞች| @endif
 
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('program-list')}}">
-                                    ፕሮግራሞች
+                                    |ፕሮግራሞች|
                                 </a>
                                 <a class="dropdown-item" href="{{route('mereja-music-list')}}">
-                                    መረጃና ሙዚቃ
+                                    |መረጃና ሙዚቃ|
                                 </a>
                                 <a class="dropdown-item" href="{{route('mastawokia-list')}}">
-                                    ማስታወቂያ
+                                    |ማስታወቂያ|
                                 </a>
                             </div>
                         </li>
@@ -237,17 +365,18 @@
                                    role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                    style=" text-align: center ;color: white ; padding-top: 0px">
-                                    ባሕርዳር ኤፍኤም የተላለፉ ፕሮግራሞች
+                                    |ባሕርዳር ኤፍኤም የተላለፉ ፕሮግራሞች|
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right " style="background-color: red"
+                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('program-list-fm')}}">
-                                        ፕሮግራሞች
+                                        |ፕሮግራሞች|
                                     </a>
                                     <a class="dropdown-item" href="{{route('mereja-music-list-fm')}}">
-                                        መረጃና ሙዚቃ
+                                        |መረጃና ሙዚቃ|
                                     </a>
                                     <a class="dropdown-item" href="{{route('mastawokia-list-fm')}}">
-                                        ማስታወቂያ
+                                        |ማስታወቂያ|
                                     </a>
                                 </div>
                             </li>
@@ -261,47 +390,48 @@
                     <ul class="navbar-nav nav mr-auto navbar-center justify-content-center" style="font-size: 15px">
                         <li>
                             <a href="{{route('home')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">FM Home</a>
+                               style=" text-align: center ;color: white">|FM Home|</a>
                         </li>
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id == 5)
                             <li>
                                 <a href="{{route('program-ayidi-create-fm')}}" class="dropdown-item hcolor px-1"
-                                   style="text-align: center ;color: white">አይዲ ጨምር</a>
+                                   style="text-align: center ;color: white">|አይዲ ጨምር|</a>
                             </li>
                             <li>
                                 <a href="{{route('register-user-fm')}}" class="dropdown-item hcolor px-1"
-                                   style="text-align: center ;color: white">ተጠቃሚ መዝግብ </a>
+                                   style="text-align: center ;color: white">|ተጠቃሚ መዝግብ| </a>
                             </li>
                         @endif
                         <li>
                             <a href="{{route('program-create-fm')}}" class="dropdown-item hcolor  px-1"
-                               style="text-align: center ;color: white">የእለቱን ፕሮግራሞች ጨምር </a>
+                               style="text-align: center ;color: white">|የእለቱን ፕሮግራሞች ጨምር| </a>
                         </li>
                         <li>
                             <a href="{{route('program-mereja-music-create-fm')}}" class="dropdown-item hcolor  px-1"
-                               style="text-align: center; color: white">መረጃና ሙዚቃ ጨምር </a>
+                               style="text-align: center; color: white">|መረጃና ሙዚቃ ጨምር| </a>
                         </li>
                         <li>
                             @if(\Illuminate\Support\Facades\Auth::user()->role_id == 9)
                                 <a href="{{route('mastawokia-create')}}" class="dropdown-item hcolor  px-1"
-                                   style=" text-align: center ;color: white">ማስታወቂያ ጨምር </a>
+                                   style=" text-align: center ;color: white">|ማስታወቂያ ጨምር| </a>
                             @endif
                         </li>
                         <li class="nav-item dropdown  hcolor  py-1 ">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                የተላለፉ ፕሮግራሞች
+                                |የተላለፉ ፕሮግራሞች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right " style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('program-list-fm')}}">
-                                    ፕሮግራሞች
+                                    |ፕሮግራሞች|
                                 </a>
                                 <a class="dropdown-item" href="{{route('mereja-music-list-fm')}}">
-                                    መረጃና ሙዚቃ
+                                    |መረጃና ሙዚቃ|
                                 </a>
                                 <a class="dropdown-item" href="{{route('mastawokia-list-fm')}}">
-                                    ማስታወቂያ
+                                    |ማስታወቂያ|
                                 </a>
                             </div>
                         </li>
@@ -320,17 +450,17 @@
                     <ul class="navbar-nav mr-auto" style="font-size: 15px">
                         <li>
                             <a href="{{route('home')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">ቴቪ Home</a>
+                               style=" text-align: center ;color: white">|ቴቪ Home|</a>
                         </li>
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id == 3 )
                             <li>
                                 <a href="{{route('register-user-tv')}}" class="dropdown-item hcolor px-1"
-                                   style="text-align: center ;color: white">ተጠቃሚ መዝግብ </a>
+                                   style="text-align: center ;color: white">|ተጠቃሚ መዝግብ| </a>
                             </li>
                         @endif
                         <li>
                             <a href="{{route('program-create-tv')}}" class="dropdown-item hcolor  px-1"
-                               style="text-align: center ;color: white">የእለቱን ፕሮግራሞች ጨምር </a>
+                               style="text-align: center ;color: white">|የእለቱን ፕሮግራሞች ጨምር| </a>
                         </li>
 
 
@@ -338,15 +468,16 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                የቴሌቪዥን ማስታወቂያዎች
+                                |የቴሌቪዥን ማስታወቂያዎች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown"
+                                 style="color: white;background-color: red">
                                 <a class="dropdown-item" href="{{route('mastawokia-list-tv-yaltelalefu')}}">
-                                    ያልተላለፉ ማስታወቂያዎች
+                                    |ያልተላለፉ ማስታወቂያዎች|
                                 </a>
 
                                 <a class="dropdown-item" href="{{route('mastawokia-list-tv')}}">
-                                    ዓየርላይ የዋሉ ማስታወቂያዎች
+                                    |ዓየርላይ የዋሉ ማስታወቂያዎች|
                                 </a>
                             </div>
                         </li>
@@ -354,11 +485,12 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                የቴሌቪዥን ፕሮግራሞች
+                                |የቴሌቪዥን ፕሮግራሞች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown"
+                                 style="background-color: red">
                                 <a class="dropdown-item" href="{{route('program-list-tv')}}">
-                                    ዓየርላይ የዋሉ ፕሮግራሞች
+                                    |ዓየርላይ የዋሉ ፕሮግራሞች|
                                 </a>
                             </div>
                         </li>
@@ -371,25 +503,26 @@
                     <ul class="navbar-nav mr-auto" style="font-size: 15px">
                         <li>
                             <a href="{{route('home')}}" class="dropdown-item hcolor  px-1"
-                               style=" text-align: center ;color: white">ቴሌቪዥን Home</a>
+                               style=" text-align: center ;color: white">|ቴሌቪዥን Home|</a>
                         </li>
 
                         <li class="nav-item dropdown  hcolor  py-1 ">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                የቴሌቪዥን ማስታወቂያዎች
+                                | የቴሌቪዥን ማስታወቂያዎች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right " style="background-color: red"
+                                 aria-labelledby="navbarDropdown">
                                 {{--                                <a class="dropdown-item" href="{{route('program-list-fm')}}">--}}
                                 {{--                                    ፕሮግራሞች--}}
                                 {{--                                </a>--}}
                                 <a class="dropdown-item" href="{{route('mastawokia-list-tv-yaltelalefu')}}">
-                                    ያልተላለፉ ማስታወቂያዎች
+                                    |ያልተላለፉ ማስታወቂያዎች|
                                 </a>
 
                                 <a class="dropdown-item" href="{{route('mastawokia-list-tv')}}">
-                                    ዓየርላይ የዋሉ ማስታወቂያዎች
+                                    |ዓየርላይ የዋሉ ማስታወቂያዎች|
                                 </a>
                             </div>
                         </li>
@@ -397,11 +530,12 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle  hcolor  px-1" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
                                style=" text-align: center ;color: white ; padding-top: 0px">
-                                የቴሌቪዥን ፕሮግራሞች
+                                |የቴሌቪዥን ፕሮግራሞች|
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown"
+                                 style="color: white;background-color: red">
                                 <a class="dropdown-item" href="{{route('program-list-tv')}}">
-                                    ዓየርላይ የዋሉ ፕሮግራሞች
+                                    |ዓየርላይ የዋሉ ፕሮግራሞች|
                                 </a>
                             </div>
                         </li>
@@ -409,7 +543,16 @@
                     </ul>
             @endif
 
+            {{--                @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1 || \Illuminate\Support\Facades\Auth::user()->role_id == 2|| \Illuminate\Support\Facades\Auth::user()->role_id == 3|| \Illuminate\Support\Facades\Auth::user()->role_id == 4|| \Illuminate\Support\Facades\Auth::user()->role_id == 5|| \Illuminate\Support\Facades\Auth::user()->role_id == 6|| \Illuminate\Support\Facades\Auth::user()->role_id == 7|| \Illuminate\Support\Facades\Auth::user()->role_id == 8|| \Illuminate\Support\Facades\Auth::user()->role_id == 9|| \Illuminate\Support\Facades\Auth::user()->role_id == 10)--}}
+            {{--                    --}}{{--                    <ul class="navbar-nav mr-auto " style="font-size: 15px;width: 50%;padding-left: 30%">--}}
+            {{--                    <ul class="navbar-nav mr-auto" style="font-size: 15px">--}}
 
+            {{--                        <li class="nav-item dropdown  hcolor  py-1 ">--}}
+            {{--                            <a href="{{route('register-user-admin')}}" class="dropdown-item hcolor px-1"--}}
+            {{--                               style="color: white">የስርጭት ባለሙያው ዓስተያየት </a>--}}
+            {{--                        </li>--}}
+            {{--                    </ul>--}}
+            {{--            @endif--}}
         @endauth
 
         <!-- Right Side Of Navbar -->
@@ -421,6 +564,25 @@
                            style="font-size: 20px;color: white">{{ __('ግ ባ') }}</a>
                     </li>
                 @else
+                    @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 2
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 3
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 4
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 5
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 6
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 7
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 8
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 9
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 10
+                        || \Illuminate\Support\Facades\Auth::user()->role_id == 11)
+                        {{--                    <ul class="navbar-nav mr-auto " style="font-size: 15px;width: 50%;padding-left: 30%">--}}
+                        <ul class="navbar-nav mr-auto" style="font-size: 15px">
+                            <li class="nav-item dropdown  hcolor  py-1 ">
+                                <a href="{{route('feedback-create')}}" class="dropdown-item hcolor px-1"
+                                   style="color: white">|የስርጭት ባለሙያው ዓስተያየት| </a>
+                            </li>
+                        </ul>
+                    @endif
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
@@ -428,13 +590,14 @@
                             {{ Auth::user()->name }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"
+                             style="background-color: red">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('ውጣ') }}
                             </a>
-                            <a class="dropdown-item" href="{{ route('change-password') }}"> ሚስጥራዊ ቁጥር ቀይር
+                            <a class="dropdown-item" href="{{ route('change-password') }}"> የይለፍ ቃል ቀይር
 
                             </a>
 

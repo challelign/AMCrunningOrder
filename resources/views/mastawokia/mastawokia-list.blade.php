@@ -4,7 +4,7 @@
     <link href="{{asset ('css/jquery.dataTables.css')}}" def rel="stylesheet">
 @endsection
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 @include('layouts.radiot')

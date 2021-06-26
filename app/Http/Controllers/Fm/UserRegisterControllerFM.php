@@ -27,6 +27,10 @@ class UserRegisterControllerFM extends Controller
 
     public function registerUserFormFm()
     {
+        if (auth()->user()->role->id == 6) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
         return view('auth.fm.register-fm')
             ->with('users', User::all())
             ->with('role', Role::all());
@@ -43,7 +47,10 @@ class UserRegisterControllerFM extends Controller
             'password' => ['required', 'string', 'min:4', 'confirmed'],
 
         ]);
-
+        if (auth()->user()->role->id == 6) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
         User::create([
             'name' => $request->name,
             'role_id' => $request->role_id,
@@ -69,7 +76,10 @@ class UserRegisterControllerFM extends Controller
     public function userUpdateFm(Request $request, $id)
     {
         $user = User::find($id);
-
+        if (auth()->user()->role->id == 6) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
 //        dd($request->all());
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -94,6 +104,11 @@ class UserRegisterControllerFM extends Controller
 
     public function userDeleteFm($id)
     {
+        if (auth()->user()->role->id == 6) {
+            session()->flash('error', 'You are not allowed to access this page. ');
+            return redirect(route('home'));
+        }
+
         $user = User::findorFail($id);
         $profm = Fmprogram::all()->where('user_id', $user->id);
         $masfm = Fmmastawokia::all()->where('user_id', $user->id);

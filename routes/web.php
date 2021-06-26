@@ -60,7 +60,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/programs/program-mereja-music-save', 'ProgramController@programMerejaMusicSave')->name('program-mereja-music-save')->middleware(['auth', 'isAdmin']);
     Route::get('/programs/{id}/program-mereja-music-edit', 'ProgramController@programMerejaMusicEdit')->name('program-mereja-music-edit')->middleware(['auth', 'isAdmin']);
     Route::post('/programs/{id}/program-mereja-music-update', 'ProgramController@programMerejaMusicUpdate')->name('program-mereja-music-update')->middleware([ 'isAdmin']);
-    Route::delete('/programs/{id}/program-mereja-music-delete', 'ProgramController@programMerejaMusicDelete')->name('program-mereja-music-delete')->middleware([ 'isAdmin']);
+    Route::get('/programs/{id}/program-mereja-music-delete', 'ProgramController@programMerejaMusicDelete')->name('program-mereja-music-delete')->middleware([ 'isAdmin']);
 
 
 //,'isTechnician','isUser'
@@ -152,7 +152,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('fm/merejaMusic/program-mereja-music-save-fm', 'Fm\MerejamusicControllerFM@programMerejaMusicSaveFm')->name('program-mereja-music-save-fm')->middleware(['auth', 'isFm']);
     Route::get('fm/merejaMusic/{id}/program-mereja-music-edit-fm', 'Fm\MerejamusicControllerFM@programMerejaMusicEditFm')->name('program-mereja-music-edit-fm')->middleware(['auth', 'isFm']);
     Route::post('fm/merejaMusic/{id}/program-mereja-music-update-fm', 'Fm\MerejamusicControllerFM@programMerejaMusicUpdateFm')->name('program-mereja-music-update-fm')->middleware(['auth', 'isFm']);
-    Route::get('fm/merejaMusic/{id}/program-mereja-music-delete-fm', 'Fm\MerejamusicControllerFM@programMerejaMusicDeleteFm')->name('program-mereja-music-delete-fm')->middleware(['auth', 'isFm']);
+    Route::get('fm/programs/merejaMusic/{id}/program-mereja-music-delete-fm', 'Fm\MerejamusicControllerFM@programMerejaMusicDeleteFm')->name('program-mereja-music-delete-fm')->middleware(['auth', 'isFm']);
 
     Route::post('fm/merejaMusic/{id}/mereja-approve-tech-fm', 'Fm\MerejamusicControllerFM@merejaApproveTechFm')->name('mereja-approve-tech-fm')->middleware(['isTechnician']);
     Route::post('fm/merejaMusic/{id}/mereja-approve-artayi-fm', 'Fm\MerejamusicControllerFM@merejaApproveArtayiFm')->name('mereja-approve-artayi-fm')->middleware(['auth', 'isFm']);
@@ -173,7 +173,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/mastawokia/mastawokia-save', 'MastawokiaController@mastawokiaSave')->name('mastawokia-save')->middleware(['auth', 'isPromotion']);
     Route::get('/mastawokia/{id}/mastawokia-edit', 'MastawokiaController@mastawokiaEdit')->name('mastawokia-edit')->middleware(['auth', 'isPromotion']);
     Route::post('/mastawokia/{id}/mastawokia-update', 'MastawokiaController@mastawokiaUpdate')->name('mastawokia-update')->middleware(['auth', 'isPromotion']);
-    Route::get('/mastawokia/{id}/mastawokia-delete', 'MastawokiaController@mastawokiaDelete')->name('mastawokia-delete')->middleware(['auth', 'isPromotion']);
+    Route::get('programs/mastawokia/{id}/mastawokia-delete', 'MastawokiaController@mastawokiaDelete')->name('mastawokia-delete')->middleware(['auth', 'isPromotion']);
 
 
     Route::post('/mastawokia/{id}/mastawokia-approve-tech', 'MastawokiaController@mastawokiaApproveTech')->name('mastawokia-approve-tech')->middleware(['isTechnician']);
@@ -193,7 +193,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('fm/mastawokia/mastawokia-save-fm', 'Pro\MastawokiaControllerFM@mastawokiaSaveFm')->name('mastawokia-save-fm')->middleware(['auth', 'isPromotion']);
     Route::get('fm/mastawokia/{id}/mastawokia-edit-fm', 'Pro\MastawokiaControllerFM@mastawokiaEditFm')->name('mastawokia-edit-fm')->middleware(['auth', 'isPromotion']);
     Route::post('fm/mastawokia/{id}/mastawokia-update-fm', 'Pro\MastawokiaControllerFM@mastawokiaUpdateFm')->name('mastawokia-update-fm')->middleware(['auth', 'isPromotion']);
-    Route::get('fm/mastawokia/{id}/mastawokia-delete-fm', 'Pro\MastawokiaControllerFM@mastawokiaDeleteFm')->name('mastawokia-delete-fm')->middleware(['auth', 'isPromotion']);
+    Route::get('fm/programs/mastawokia/{id}/mastawokia-delete-fm', 'Pro\MastawokiaControllerFM@mastawokiaDeleteFm')->name('mastawokia-delete-fm')->middleware(['auth', 'isPromotion']);
 
     Route::get('fm/mastawokia/mastawokia-list-fm', 'Pro\MastawokiaControllerFM@mastawokiaListFm')->name('mastawokia-list-fm')->middleware(['auth']);
     Route::get('fm/mastawokia/mastawokia-list-fm-yaltelalefu', 'Pro\MastawokiaControllerFM@mastawokiaListFmYaltelalefu')->name('mastawokia-list-fm-yaltelalefu')->middleware(['isPromotion']);
@@ -284,7 +284,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('tv/mastawokia/mastawokia-save-tv', 'Pro\MastawokiaControllerTv@mastawokiaSaveTv')->name('mastawokia-save-tv')->middleware(['auth', 'isPromotion']);
     Route::get('tv/mastawokia/{id}/mastawokia-edit-tv', 'Pro\MastawokiaControllerTv@mastawokiaEditTv')->name('mastawokia-edit-tv')->middleware(['auth', 'isPromotion']);
     Route::post('tv/mastawokia/{id}/mastawokia-update-tv', 'Pro\MastawokiaControllerTv@mastawokiaUpdateTv')->name('mastawokia-update-tv')->middleware(['auth', 'isPromotion']);
-    Route::get('tv/mastawokia/{id}/mastawokia-delete-tv', 'Pro\MastawokiaControllerTv@mastawokiaDeleteTv')->name('mastawokia-delete-tv')->middleware(['auth', 'isPromotion']);
+    Route::get('tv/programs/mastawokia/{id}/mastawokia-delete-tv', 'Pro\MastawokiaControllerTv@mastawokiaDeleteTv')->name('mastawokia-delete-tv')->middleware(['auth', 'isPromotion']);
 
 
     Route::post('tv/mastawokia/{id}/mastawokia-approve-artayi-tv', 'Pro\MastawokiaControllerTv@mastawokiaApproveArtayiTv')->name('mastawokia-approve-artayi-tv')->middleware(['isPromotion']);
@@ -306,6 +306,14 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::post('admin/Auth/{id}/user-make-active', 'Admin\UserRegisterControllerAdmin@userMakeActive')->name('user-make-active')->middleware(['auth', 'isSysAdmin']);
     Route::post('admin/Auth/{id}/user-make-inactive', 'Admin\UserRegisterControllerAdmin@userMakeInActive')->name('user-make-inactive')->middleware(['auth', 'isSysAdmin']);
+
+
+//    feedback
+    Route::get('feedback/feedback-create', 'Fb\FeedbackController@feedbackCreate')->name('feedback-create')->middleware(['auth']);
+    Route::post('feedback/{id}/feedback-save', 'Fb\FeedbackController@feedbackSave')->name('feedback-save')->middleware(['auth']);
+
+
+    Route::get('feedback/{id}/feedback-delete', 'Fb\FeedbackController@feedbackDelete')->name('feedback-delete')->middleware(['auth', 'isSysAdmin']);
 
 });
 

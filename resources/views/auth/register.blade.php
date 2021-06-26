@@ -72,7 +72,7 @@
                                                 autocomplete="role_id">
                                             <option selected disabled>ይምረጡ</option>
                                             @foreach($role as $r)
-                                                @if($r->id == 3 || $r->id == 4  || $r->id == 5 || $r->id == 6 || $r->id == 7 || $r->id == 9 || $r->id == 10 || $r->id == 11)
+                                                @if($r->id == 3 || $r->id == 4  || $r->id == 5 || $r->id == 6 || $r->id == 7 || $r->id == 9 || $r->id == 10 || $r->id == 11|| $r->id == 12)
                                                     @continue
                                                 @endif
 
@@ -82,7 +82,7 @@
                                                         selected
                                                     @endif
                                                     @endif>
-                                                    @if($r->id == 3 || $r->id == 4 || $r->id == 5 || $r->id == 6 || $r->id == 7 || $r->id == 9 || $r->id == 10 || $r->id == 11 )
+                                                    @if($r->id == 3 || $r->id == 4 || $r->id == 5 || $r->id == 6 || $r->id == 7 || $r->id == 9 || $r->id == 10 || $r->id == 11|| $r->id == 12 )
                                                        @continue
                                                     @endif
                                                         {{$r->name}}
@@ -162,7 +162,7 @@
                                     <tbody>
                                     @if($i = 0)@endif
                                     @foreach($users as $us)
-                                        @if($us->role->id== 3 || $us->role->id == 4  || $us->role->id == 5 || $us->role->id== 6 ||  $us->role->id == 7 ||  $us->role->id== 9 ||  $us->role->id == 10 ||  $us->role->id== 11)
+                                        @if($us->role->id== 3 || $us->role->id == 4  || $us->role->id == 5 || $us->role->id== 6 ||  $us->role->id == 7 ||  $us->role->id== 9 ||  $us->role->id == 10 ||  $us->role->id== 11||  $us->role->id== 12)
                                             @continue
                                         @endif
 

@@ -666,7 +666,7 @@
         function handelDelete(id) {
             var form = document.getElementById('deleteCategoryForm');
 
-            form.action = '/programs/' + id + '/program-list-by-date-delete/';
+            form.action = '../../programs/' + id + '/program-list-by-date-delete/';
             // console.log('deleting .' , form);
             $('#deleteModal').modal('show')
         }
@@ -675,7 +675,7 @@
         function handelDeleteMereja(id) {
             var form = document.getElementById('deleteCategoryFormMereja');
 
-            form.action = '/programs/' + id + '/program-mereja-music-delete/';
+            form.action = '../../programs/' + id + '/program-mereja-music-delete/';
             // console.log('deleting .' , form);
             $('#deleteModalMereja').modal('show')
         }
@@ -686,7 +686,7 @@
         function handelDeleteMastawokia(id) {
             var form = document.getElementById('deleteCategoryFormMastawokia');
 
-            form.action = '/mastawokia/' + id + '/mastawokia-delete/';
+            form.action = '../mastawokia/' + id + '/mastawokia-delete/';
             // console.log('deleting .' , form);
             $('#deleteModalMastawokia').modal('show')
         }
