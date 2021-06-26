@@ -255,6 +255,29 @@ src = "{{asset('js/jquery.min.js')}}" ></script>
 <script src="{{asset('js/jquery.calendars.ethiopian-am.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.calendars.picker-am.js')}}"></script>
 
+<script>
+    $('#configPicker').datepick({showTrigger: '#calImg'});
+    $('#today_date').calendarsPicker({calendar: calendar, onSelect: showDate});
+
+</script>
+<script>
+
+    $(function() {
+        var calendar = $.calendars.instance('ethiopian','am');
+        $('#today_date').calendarsPicker({
+            calendar: calendar,
+            dateFormat: "dd/mm/yyyy",
+            animate:true,
+            // miniDate:new Date(),
+            // dateFormat: "mm-dd-yyyy",
+            maxDate:1,
+            minDate:0,
+
+        });
+        // $('#today_date').calendarsPicker({calendar: calendar, onSelect: showDate});
+
+    });
+</script>
 
 @endsection
 @section('js')

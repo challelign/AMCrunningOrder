@@ -61,7 +61,7 @@
                                     <div class="card-header bg-info  "
                                          style="color: white ;font-size: 15px"> {{$ken->name}}
                                         ጠዋት[12:00-6:00] የተሞሉ
-                                        ፐሮግራሞች ዝርዝር ቀን {{$mas->today_date}}
+                                        ፐሮግራሞች ዝርዝር ቀን {{$pro->today_date}}
                                     </div>
                                     <div class="col-md-12 panel-primary card-header border-info "
                                          style="color: #1f6fb2; font-size: 15px">

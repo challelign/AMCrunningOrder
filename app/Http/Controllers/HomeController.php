@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Feedback;
 use App\Fmmerehagibr;
 use App\Merehagibr;
 use App\Miraf;
@@ -38,6 +39,7 @@ class HomeController extends Controller
             ->with('ken', ProgramKen::all())
             ->with('pcontent', Tvpcontent::all())
             ->with('fmm', Fmmerehagibr::all())
+            ->with('feedback',Feedback::all())
             ->with('programmeleyaid', ProgramMeleya::all());
     }
 }

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'password', 'username','role_id','user_created_by'
+        'name', 'password', 'username', 'role_id', 'user_created_by'
     ];
 
     /**
@@ -49,5 +49,10 @@ class User extends Authenticatable
     public function mastawokia()
     {
         return $this->belongsTo(Mastawokia::class);
+    }
+
+    public function feedback()
+    {
+        return $this->belongsTo(Feedback::class);
     }
 }

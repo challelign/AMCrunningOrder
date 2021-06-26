@@ -149,6 +149,13 @@ class UserRegisterControllerAdmin extends Controller
 //        dd($id);
         $user = User::find($id);
 
+        if ($user->id == Auth::user()->id) {
+            session()->flash('error', 'You cannot De Activated your account. ');
+            return redirect(route('register-user-admin'));
+        }
+
+
+
         $user->isActive = 0;
         $user->save();
         session()->flash('error', 'The user is DeActivated  ');

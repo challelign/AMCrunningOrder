@@ -324,7 +324,7 @@ class ProgramController extends Controller
 
 
         return view('merejaMusic.mereja-music-list',
-            compact('programmeleyaid', 'prodate', 'proelet', 'proken', 'mereja'));
+            compact('prodate', 'proelet', 'proken', 'mereja'));
 
 
 //        return view('merejaMusic.mereja-music-list')

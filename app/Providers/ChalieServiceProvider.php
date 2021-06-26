@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Feedback;
 use App\Fmmastawokia;
 use App\Fmmelaya;
 use App\Fmmereja;
@@ -37,6 +38,7 @@ class ChalieServiceProvider extends ServiceProvider
     {
         View::composer(['layouts.app',
 //            'fm.programs.program-list-by-date-fm',
+            'feedback.feedback',
 
             'programs.program.list-by-date',
 //            new start
@@ -58,7 +60,7 @@ class ChalieServiceProvider extends ServiceProvider
             'auth.admin.register-admin',
             'auth.tv.register-tv',
             'auth.register-edit',
-
+            'feedback.feedback',
 
 //            'fm.programs.program-list-by-date-fm',
 
@@ -74,18 +76,14 @@ class ChalieServiceProvider extends ServiceProvider
         ], function ($view) {
             $view->with('ken', ProgramKen::all())
                 ->with('program', Program::all())
-
-
                 ->with('meleyafm', Fmmelaya::all())
                 ->with('programfm', Fmprogram::all())
                 ->with('programtv', Tvprogram::all())
                 ->with('mastawokiafm', Fmmastawokia::all())
                 ->with('mastawokiatv', Tvmastawokia::all())
                 ->with('merejafm', Fmmereja::all())
-                ->with('mitelalfbettv',Tvmitelalefbet::all())
-
-
-
+                ->with('mitelalfbettv', Tvmitelalefbet::all())
+                ->with('feedback', Feedback::all())
                 ->with('users', User::all())
                 ->with('programmeleyaid', ProgramMeleya::all());
         });

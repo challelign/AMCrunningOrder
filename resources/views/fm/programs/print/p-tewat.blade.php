@@ -24,7 +24,7 @@
     <title>ዕለቱ @if(\Illuminate\Support\Facades\Auth::user()->role_id == 10 ) {{$maf->name}}  ጠዋት[12:00-6:00]
         ቀን {{$maf->today_date}}
         @else
-            ዕለቱ {{$ken->name}} ጠዋት[12:00-6:00] ቀን {{$pro->today_date}} @endif  </title>
+             {{$ken->name}} ጠዋት[12:00-6:00] ቀን {{$pro->today_date}} @endif  </title>
 
 {{--    <title> ዕለቱ {{$ken->name}} ጠዋት[12:00-6:00] ቀን {{$pro->today_date}} </title>--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -59,7 +59,7 @@
 
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id == 5 )
                             <div class="card">
-                                <div class="card-header bg-info  " style="color: white ;font-size: 15px"> {{$ken->name}}
+                                <div class="card-header bg-info  " style="color: white ;font-size: 20px"> {{$ken->name}}
                                     ጠዋት[12:00-6:00] የተሞሉ
                                     ፐሮግራሞች ዝርዝር ቀን {{$pro->today_date}}
                                 </div>
@@ -77,7 +77,7 @@
                                     @endforeach
 
                                     @csrf
-                                    @if($i = 0)
+                                    @if($i == 0)
                                         <div class="card-body">
                                             <p class="text-center"> ፐሮግራሞች የሉም </p>
                                         </div>
@@ -196,65 +196,70 @@
                                             @endforeach
                                         </table>
                                     @endif
-                                    <div class="col-md-12 panel-primary card-header border-info "
-                                         style="color: #1f6fb2; font-size: 15px">
-                                        ማስታወቂያ
-                                    </div>
-                                    @if($i = 0)@endif
-                                    @foreach($mastawokiafm as $ms)
-                                        @if($ms->program_ken_id == $ken->id && $ms->is_transmit == 0
-                                            &&   $ms->mastawokia_mitelalefbet == 'ጠዋት[12:00-6:00]')
-                                            @if($i++)@endif
-                                        @endif
-                                    @endforeach
-                                    @if($i = 0)
 
-                                        <div class="card-body">
-                                            <p class="text-center"> ማስታወቂያ የለም </p>
-                                        </div>
-                                    @else
-                                        <table class="table table-bordered table-striped table-responsive form-group"
-                                               id="user_table">
-                                            @csrf
-                                            <thead class="table-bordered text-center">
-                                            <tr>
-                                                <th>ተ.ቁ</th>
-                                                <th>ቀን</th>
-                                                {{--                                                <th>ማስታወቂያውን ሚተላለፍበት</th>--}}
-                                                {{--                                                <TH>ዕለቱ</TH>--}}
-                                                <TH>ማስታወቂያ አስነጋሪው</TH>
-                                                <TH>ፋይል ስም</TH>
-                                                <TH>ደቂቃ</TH>
-                                                <TH>ሚተላለፍበትን ሰዓት</TH>
-                                                <TH>ድግግሞሽ መጠን</TH>
+
+
+
+
+{{--                                    <div class="col-md-12 panel-primary card-header border-info "--}}
+{{--                                         style="color: #1f6fb2; font-size: 15px">--}}
+{{--                                        ማስታወቂያ--}}
+{{--                                    </div>--}}
+{{--                                    @if($i = 0)@endif--}}
+{{--                                    @foreach($mastawokiafm as $ms)--}}
+{{--                                        @if($ms->program_ken_id == $ken->id && $ms->is_transmit == 0--}}
+{{--                                            &&   $ms->mastawokia_mitelalefbet == 'ጠዋት[12:00-6:00]')--}}
+{{--                                            @if($i++)@endif--}}
+{{--                                        @endif--}}
+{{--                                    @endforeach--}}
+{{--                                    @if($i = 0)--}}
+
+{{--                                        <div class="card-body">--}}
+{{--                                            <p class="text-center"> ማስታወቂያ የለም </p>--}}
+{{--                                        </div>--}}
+{{--                                    @else--}}
+{{--                                        <table class="table table-bordered table-striped table-responsive form-group"--}}
+{{--                                               id="user_table">--}}
+{{--                                            @csrf--}}
+{{--                                            <thead class="table-bordered text-center">--}}
+{{--                                            <tr>--}}
+{{--                                                <th>ተ.ቁ</th>--}}
+{{--                                                <th>ቀን</th>--}}
+{{--                                                --}}{{--                                                <th>ማስታወቂያውን ሚተላለፍበት</th>--}}
+{{--                                                --}}{{--                                                <TH>ዕለቱ</TH>--}}
+{{--                                                <TH>ማስታወቂያ አስነጋሪው</TH>--}}
+{{--                                                <TH>ፋይል ስም</TH>--}}
+{{--                                                <TH>ደቂቃ</TH>--}}
+{{--                                                <TH>ሚተላለፍበትን ሰዓት</TH>--}}
+{{--                                                <TH>ድግግሞሽ መጠን</TH>--}}
 {{--                                                <TH>የተስተናገደው መጠን</TH>--}}
-                                                <th>ማስታወቂያውን የመዘገበው</th>
-                                                <th>እንዲተላለፍ የፈቀደው</th>
-                                            </TR>
-                                            </thead>
-                                            @if($i = 0)@endif
-                                            @foreach($mastawokiafm as $ms)
-                                                @if($ms->program_ken_id == $ken->id && $ms->is_transmit == 0
-                                                    &&   $ms->mastawokia_mitelalefbet == 'ጠዋት[12:00-6:00]')
-                                                    <tbody>
-                                                    @if($i++)@endif
-                                                    <td>{{$i}}</td>
-                                                    <td> {{$ms->today_date}}</td>
-                                                    {{--                                                    <td>{!!  $ms->mastawokia_mitelalefbet!!}</td>--}}
-                                                    {{--                                                    <td>{!!  $ms->programKen->name !!}</td>--}}
-                                                    <td>{!!  $ms->mastawokia_tekuam!!}</td>
-                                                    <td>{!!  $ms->mastawokia_file!!}</td>
-                                                    <td>{!!  $ms->mastawokia_gize!!}</td>
-                                                    <td>{!!  $ms->mastawokia_mitelalefbet_seat!!}</td>
-                                                    <td>{!!  $ms->mastawokia_diggmosh!!}</td>
+{{--                                                <th>ማስታወቂያውን የመዘገበው</th>--}}
+{{--                                                <th>እንዲተላለፍ የፈቀደው</th>--}}
+{{--                                            </TR>--}}
+{{--                                            </thead>--}}
+{{--                                            @if($i = 0)@endif--}}
+{{--                                            @foreach($mastawokiafm as $ms)--}}
+{{--                                                @if($ms->program_ken_id == $ken->id && $ms->is_transmit == 0--}}
+{{--                                                    &&   $ms->mastawokia_mitelalefbet == 'ጠዋት[12:00-6:00]')--}}
+{{--                                                    <tbody>--}}
+{{--                                                    @if($i++)@endif--}}
+{{--                                                    <td>{{$i}}</td>--}}
+{{--                                                    <td> {{$ms->today_date}}</td>--}}
+{{--                                                    --}}{{--                                                    <td>{!!  $ms->mastawokia_mitelalefbet!!}</td>--}}
+{{--                                                    --}}{{--                                                    <td>{!!  $ms->programKen->name !!}</td>--}}
+{{--                                                    <td>{!!  $ms->mastawokia_tekuam!!}</td>--}}
+{{--                                                    <td>{!!  $ms->mastawokia_file!!}</td>--}}
+{{--                                                    <td>{!!  $ms->mastawokia_gize!!}</td>--}}
+{{--                                                    <td>{!!  $ms->mastawokia_mitelalefbet_seat!!}</td>--}}
+{{--                                                    <td>{!!  $ms->mastawokia_diggmosh!!}</td>--}}
 {{--                                                    <td>{!!  $ms->mastawokia_Yetestenagedew_meten!!}</td>--}}
-                                                    <td>{{$ms->user->name}}</td>
-                                                    <td>{{$ms->artayi}}</td>
-                                                    </tbody>
-                                                @endif
-                                            @endforeach
-                                        </table>
-                                    @endif
+{{--                                                    <td>{{$ms->user->name}}</td>--}}
+{{--                                                    <td>{{$ms->artayi}}</td>--}}
+{{--                                                    </tbody>--}}
+{{--                                                @endif--}}
+{{--                                            @endforeach--}}
+{{--                                        </table>--}}
+{{--                                    @endif--}}
                                 </div>
                             </div>
                             <br><br>
@@ -275,7 +280,7 @@
 
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id == 10 )
 
-                                <div class="card-header bg-info  " style="color: white ;font-size: 15px"> {{$ken->name}}
+                                <div class="card-header bg-info  " style="color: white ;font-size: 20px"> {{$ken->name}}
                                     ጠዋት[12:00-6:00] የተሞሉ
                                     ማስታወቂያዎች ዝርዝር ቀን {{$maf->today_date}}
                                 </div>

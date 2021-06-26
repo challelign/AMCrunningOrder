@@ -67,7 +67,7 @@ class MerejamusicControllerFM extends Controller
 
 
         return view('fm.merejaMusic.mereja-music-list-fm',
-            compact('programmeleyaid', 'prodate', 'proelet', 'proken', 'mereja'));
+            compact('prodate', 'proelet', 'proken', 'mereja'));
     }
 
 
